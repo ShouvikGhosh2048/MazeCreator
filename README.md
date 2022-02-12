@@ -1,1 +1,10 @@
 # MazeCreator
+
+A website to make and play with mazes. You can try it out [here](https://desolate-mountain-91027.herokuapp.com/home/).
+
+## Useful resources:
+Some of the useful resources used to make this project:
+- [MDN](https://developer.mozilla.org/en-US/)
+- [Corey Schafer's tutorial](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) (especially for authentication)
+- [Django documentation](https://docs.djangoproject.com/en/4.0/)
+- [Stack Overflow](https://stackoverflow.com/)
