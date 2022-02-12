@@ -1,0 +1,21 @@
+{% extends "main_app/base.html" %} 
+{% load static %}
+
+{% block include %}
+    <link rel="stylesheet" href="{% static 'main_app/css/profile.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <p>Your bookmarks:</p>
+    <ul>
+        {% for maze in bookmarks %}
+            <li><a href="{{ maze.get_absolute_url }}" class="ellipsis-on-overflow">{{ maze.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <p>Your creations:</p>
+    <ul>
+        {% for maze in creations %}
+            <li><a href="{{ maze.get_absolute_url }}" class="ellipsis-on-overflow">{{ maze.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

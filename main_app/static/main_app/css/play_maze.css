@@ -1,0 +1,59 @@
+* {
+    user-select : none;
+}
+
+.hidden {
+    display: none;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+canvas {
+    border: 1px solid rgb(0, 0, 0);
+    width: 80vw;
+    height: 80vw;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+#playMenu {
+    text-align: center;
+}
+
+#playMenuContainer {
+    background-color: rgba(255,255,255,0.8);
+}
+
+#play,#replay {
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: larger;
+}
+
+#play {
+    background-color: #004b0a;
+}
+
+#replay {
+    background-color: #004b0a;
+}
+
+.arrowButtons {
+    display: none;
+}
+.arrowButton {
+    border: 1px solid black;
+}
+
+@media (pointer:coarse){
+    .arrowButtons {
+        display: grid;
+    }
+}

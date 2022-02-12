@@ -1,0 +1,29 @@
+{% extends "main_app/base.html" %}
+{% load static %}
+
+{% block include %}
+    <link rel="stylesheet" href="{% static 'main_app/css/maze_list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <form>
+        <span>
+            <span>
+                <label>Title:</label>
+                <input type="text" name="title" id="title" value="{{ search_title }}">
+            </span>
+            <span>
+                {% if user_is_moderator %}
+                <input type="checkbox" name="requested_publish" id="requested_publish" {% if requested_publish %} checked {% endif %}>
+                <label for="requested_publish">Show the mazes requesting a review.</label>
+            {% endif %}  
+            </span>            
+        </span>
+        <input type="submit" value="Search maze">
+    </form>
+    <div class="search-results">
+        {% for maze in maze_list %}
+            <div><a href="{{ maze.get_absolute_url }}" class="result-name ellipsis-on-overflow">{{ maze.title }}</a>  <a href="{{ maze.creator.userprofile.get_absolute_url }}" class="result-author ellipsis-on-overflow">-{{ maze.creator.username }}</a></div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,96 @@
+/* Main form */
+
+.hidden {
+    display: none;
+}
+
+html {
+    min-width: 300px;
+}
+
+.mainForm {
+    margin: auto;
+    width: fit-content;
+    max-width: 400px;
+}
+
+.mainForm label {
+    margin-right: 20px;
+}
+
+.mainForm p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.errorlist {
+    color: rgb(190,0,0);
+}
+
+.submitContainer {
+    display: flex; 
+    justify-content: center;
+}
+
+.submitContainer input[type="submit"] {
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    color: white;
+    background-color: #11640a;
+    border-radius: 3px;
+    font-size: 1em;
+}
+
+button {
+    padding: 4px 6px;
+}
+
+#gridErrors {
+    color: rgb(190, 0, 0);
+}
+
+/* Grid editor */
+
+#gridEditor > div {
+    margin-bottom: 10px;
+}
+
+#canvasContainer {
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 60vh;
+    overflow: auto;
+}
+
+canvas {
+    border: 1px solid black;
+}
+
+.cancelButton {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 2px;
+    background-color: rgb(150, 3, 3);
+    color: white;
+    cursor: pointer;
+}
+
+.menuButton {
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 2px;
+    background-color: rgb(71, 20, 112);
+    cursor: pointer;
+}
+
+#newGridForm span {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#newGridForm {
+    margin: 20px 0;
+}

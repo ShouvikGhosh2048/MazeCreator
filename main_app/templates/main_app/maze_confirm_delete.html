@@ -1,0 +1,15 @@
+{% extends "main_app/base.html" %}
+{% load static %}
+
+{% block include %}
+    <link rel="stylesheet" href="{% static 'main_app/css/maze_confirm_delete.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <p class="ellipsis-on-overflow" >Delete the maze: {{ maze.title }}</p>
+        <input type="submit" value="Confirm" class="deleteButton"/>
+    </form>
+{% endblock %}

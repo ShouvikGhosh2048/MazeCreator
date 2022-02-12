@@ -1,0 +1,19 @@
+{% extends "main_app/base.html" %} 
+{% load static %}
+
+{% block include %}
+    <link rel="stylesheet" href="{% static 'main_app/css/user_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <p class="ellipsis-on-overflow">User: {{ user_to_view.username }}</p>
+    <p>Date of joining: {{ user.userprofile.joining_date }}</p>
+    {% if creations %}
+        <p>Creations</p>
+        <ul>
+            {% for maze in creations %}
+                <li><a href="{{ maze.get_absolute_url }}" class="creation ellipsis-on-overflow">{{ maze.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

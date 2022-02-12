@@ -1,0 +1,76 @@
+{% extends "main_app/base.html" %}
+{% load static %}
+
+{% block include %}
+    <script src="{% static 'main_app/js/maze_detail.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'main_app/css/maze_detail.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <p class="ellipsis-on-overflow">Title: {{ maze.title }}</p>
+    <p class="creator-details"><span>Creator: </span><a href="{{ maze.creator.userprofile.get_absolute_url }}" class="username-link ellipsis-on-overflow">{{ maze.creator.username }}</a></p>
+    <p>Creation Date: {{ maze.creation_date }}</p>
+    {% if average_rating %}
+        <p id="average_rating">Average rating: {{ average_rating }}</p>
+    {% endif %}
+    {% if creator %}
+        <div id="creator_controls">
+            <a href="{% url 'update_maze' maze.id %}" class="update-link">Edit maze</a>
+            <span id="set_publish">
+                {% if maze.public %}
+                    <button id="creator_visibility_control" data-action="make-private">Make private</button>
+                {% elif maze.requested_publish %}
+                    <button id="creator_visibility_control" data-action="cancel-public">Cancel request to make public</button>
+                {% else %}
+                    <button id="creator_visibility_control" data-action="make-public">Request to make public</button>
+                {% endif %}
+            </span>
+            <a href="{% url 'delete_maze' maze.id %}" class="delete-link">Delete maze</a>
+        </div>
+    {% endif %}
+    {% if user.is_authenticated %}
+        <div class="user_controls">
+            {% if authenticated_non_creator %}
+                {% for i in stars_range %}
+                    <span class="star-container">
+                        {% if i.1 %}
+                            <svg viewBox = "0 0 100 100" width="30px" height="30px" id="star{{i.0}}" class="star">
+                                <polygon points="50,50  50,10  26,82" fill="rgb(224, 203, 6)"/>
+                                <polygon points="50,50  12,38  74,82" fill="rgb(224, 203, 6)"/>
+                                <polygon points="50,50  26,82  88,38" fill="rgb(224, 203, 6)"/>
+                                <polygon points="50,50  74,82  50,10" fill="rgb(224, 203, 6)"/>
+                                <polygon points="50,50  88,38  12,38" fill="rgb(224, 203, 6)"/>
+                            </svg>
+                        {% else %}
+                            <svg viewBox = "0 0 100 100" width="30px" height="30px" id="star{{i.0}}" class="star">
+                                <polygon points="50,50  50,10  26,82" fill="gray"/>
+                                <polygon points="50,50  12,38  74,82" fill="gray"/>
+                                <polygon points="50,50  26,82  88,38" fill="gray"/>
+                                <polygon points="50,50  74,82  50,10" fill="gray"/>
+                                <polygon points="50,50  88,38  12,38" fill="gray"/>
+                            </svg>
+                        {% endif %}
+                    </span>
+                {% endfor %}
+            {% endif %}
+            <input type="submit" name="bookmark" id="bookmark"
+            {% if bookmark %}
+                value = "Remove from bookmarks"
+            {% else %}
+                value = "Add to bookmarks"
+            {% endif %}>
+        </div>
+    {% endif %}
+    {% if maze_moderator_controls %}
+        <div id="moderator_controls">
+            {% if maze.public %}
+                <button id="moderator_visibility_control" data-action="remove-from-public">Remove from public</button>
+            {% elif maze.requested_publish %}
+                <button id="moderator_visibility_control" data-action="make-public">Make public</button>
+            {% endif %}
+        </div>
+    {% endif %}
+    <div>
+        <a href = "{% url 'play_maze' maze.id %}" class="play-link">Play maze</a>
+    </div>
+{% endblock %}

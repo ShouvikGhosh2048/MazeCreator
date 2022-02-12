@@ -1,0 +1,68 @@
+.user_controls {
+    display: flex;
+    align-items: center;
+}
+
+.star-container {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.play-link {
+    font-size: small;
+    display: inline-block;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(64, 3, 80);
+    border-radius: 5px;
+}
+
+.delete-link {
+    font-size: small;
+    display: inline-block;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(116, 0, 0);
+    border-radius: 5px;
+}
+
+.update-link {
+    font-size: small;
+    display: inline-block;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(26, 134, 16);
+    border-radius: 5px;
+}
+
+
+.username-link {
+    color: black;
+    max-width: 90vw;
+    display: inline-block;
+    margin-left: 5px;
+}
+.creator-details {
+    display: flex;
+    align-items: baseline;
+}
+
+#creator_controls,.user_controls,#moderator_controls {
+    margin: 10px 0;
+}
+
+button, #bookmark {
+    border: none;
+    font-size: small;
+    display: inline-block;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(26, 134, 16);
+    cursor: pointer;
+    border-radius: 5px;
+}

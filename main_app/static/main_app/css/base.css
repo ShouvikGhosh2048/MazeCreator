@@ -1,0 +1,56 @@
+/* Base style */
+* {
+    font-family: sans-serif;
+}
+
+html, body, div {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    min-width: 300px;
+}
+
+main {
+    margin: 10px;
+}
+
+/* Site navigation style */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px;
+    background-color: rgb(87, 2, 109);
+}
+
+nav a{
+    color: whitesmoke;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.home-link {
+    font-size: larger;
+}
+
+.other-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.other-links a {
+    margin: 0 5px;
+}
+
+/* Refer to MDN on text-overflow.*/
+.ellipsis-on-overflow {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.profile-link {
+    max-width: 30vw;
+}

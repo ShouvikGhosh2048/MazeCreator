@@ -1,0 +1,14 @@
+{% extends "main_app/base.html" %}
+{% load static %}
+
+{% block include %}
+    <link rel="stylesheet" href = "{% static 'main_app/css/home.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <h1>Where mazes are created, and then conquered.</h1>
+    <div class="homepage-links">
+        <a href="{% url 'create_maze' %}">Create maze</a>
+        <a href="{% url 'search_mazes' %}">Search mazes</a>
+    </div>
+{% endblock %}

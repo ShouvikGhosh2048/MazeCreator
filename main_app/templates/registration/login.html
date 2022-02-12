@@ -1,0 +1,18 @@
+{% extends "main_app/base.html" %}
+{% load static %}
+
+{% block include %}
+    <link rel="stylesheet" href="{% static 'main_app/css/register_form.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <h2>Login</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <div class="submitContainer">
+            <input type="submit" value="Login"/>
+        </div>
+    </form>
+{% endblock %}

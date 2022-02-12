@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+}
+.homepage-links {
+    display: flex;
+    justify-content: center;
+}
+
+.homepage-links a {
+    display: inline-block;
+    margin: 10px;
+    font-size: larger;
+    color: rgb(71, 0, 88);
+    border-radius: 5px;
+    text-decoration: none;
+}

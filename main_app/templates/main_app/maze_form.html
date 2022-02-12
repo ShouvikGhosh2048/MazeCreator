@@ -1,0 +1,73 @@
+{% extends "main_app/base.html" %}
+{% load static %}
+
+{% block include %}
+    <link rel="stylesheet" href="{% static 'main_app/css/maze_form.css' %}"/>
+    <script src = "{% static 'main_app/js/draw_square.js' %}"></script>
+    <script src = "{% static 'main_app/js/maze_form.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div id="mazeFormContainer" class="mainForm">
+        <form method="post" id="mazeForm">
+            <h2>Create Maze</h2>
+            {% csrf_token %}
+            {% if error %}
+                Invalid form submission. Try again.
+            {% endif %}
+            <p>
+                <label for="title">Title:</label>
+                <input id="title" name="title" type="text" maxlength="150" value="{{ title }}" required/>
+            </p>
+            <p>
+                <label for="time">Time (in minutes, from 1 to 99):</label>
+                <input id="time" name="time" type="number" min="1" max="99" step="1" value="{{ time }}" required/>
+            </p>
+            <p id="gridErrors"></p>
+            <p>
+                <button type="button" id="openGridEditor" class="menuButton">Open grid editor</button>
+            </p>
+            <input type="hidden" name="grid" value = "{{ grid }}" id="gridString"/>
+            <div class="submitContainer">
+                <input type="submit" value="Create maze" id="createMaze" />
+            </div>
+        </form>
+    </div>
+    <div class="gridEditor hidden" id="gridEditor">
+        <div>
+            <button id="closeGridEditor" class="cancelButton">Close</button>
+        </div>
+        <div>
+            <button id="newGrid" class="menuButton">Create New Grid</button>
+            <span id="newGridDimensions" class="hidden">
+                <form id="newGridForm">
+                    <span>
+                        <label for="width">Width (1-100): </label>
+                        <input type="number" id="width" min="1" max="100" step="1" required>    
+                    </span>
+                    <span>
+                        <label for="height">Height (1-100): </label>
+                        <input type="number" id="height" min="1" max="100" step="1" required>
+                    </span>
+                    <span>
+                        <input type="submit" id="createNewGrid" value="Create New Grid" class="menuButton"/>
+                        <button type="button" id="cancelNewGrid" class="cancelButton">Cancel</button>
+                    </span>
+                </form>
+            </span>
+        </div>
+        <div>
+            <label>Brush Type</label>
+            <select id="brushSelect">
+                <option value="P">Player</option>
+                <option value="G">Goal</option>
+                <option value="B">Block</option>
+                <option value="E">Empty</option>
+                <option value="C">Coin</option>
+                <option value="T">Time bonus</option>
+            </select>
+        </div>
+        <div id="canvasContainer">
+        </div>
+    </div>
+{% endblock %}
