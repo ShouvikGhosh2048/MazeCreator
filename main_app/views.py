@@ -42,11 +42,13 @@ def create_maze(request):
                 "time": "",
                 "grid": "",
                 "error":True,
+                "create":True,
             })
     return render(request,"main_app/maze_form.html",{
             "title": "",
             "time": "",
             "grid": "",
+            "create": True,
     })
 
 @login_required
@@ -68,11 +70,13 @@ def update_maze(request,pk):
                 "time": form.data["time"],
                 "grid": form.data["grid"],
                 "error": True,
+                "create": False,
             })
     return render(request,"main_app/maze_form.html",{
         "title": maze.title,
         "time": maze.time,
         "grid": maze.grid,
+        "create": False,
     })
 
 def play_maze(request,pk):

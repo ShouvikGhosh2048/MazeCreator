@@ -10,7 +10,11 @@
 {% block content %}
     <div id="mazeFormContainer" class="mainForm">
         <form method="post" id="mazeForm">
-            <h2>Create Maze</h2>
+            {% if create %}
+                <h2>Create maze</h2>
+            {% else %}
+                <h2>Edit maze</h2>
+            {% endif %}
             {% csrf_token %}
             {% if error %}
                 Invalid form submission. Try again.
@@ -29,7 +33,11 @@
             </p>
             <input type="hidden" name="grid" value = "{{ grid }}" id="gridString"/>
             <div class="submitContainer">
-                <input type="submit" value="Create maze" id="createMaze" />
+                {% if create %}
+                    <input type="submit" value="Create maze" id="submitMazeForm" />
+                {% else %}
+                    <input type="submit" value="Edit maze" id="submitMazeForm" />
+                {% endif %}
             </div>
         </form>
     </div>
