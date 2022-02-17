@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+    <p>Date of joining: {{ user.userprofile.joining_date }}</p>
     <p>Your bookmarks:</p>
     <ul>
         {% for maze in bookmarks %}
