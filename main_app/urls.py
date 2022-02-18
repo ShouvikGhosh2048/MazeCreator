@@ -20,4 +20,5 @@ urlpatterns = [
     path("profile",views.profile,name="profile"),
     path('maze/delete/<int:pk>/',views.MazeDeleteView.as_view(),name="delete_maze"),
     path('maze/update_maze/<int:pk>/',views.update_maze,name="update_maze"),
+    path("wiki/",views.wiki,name="wiki"),
 ]

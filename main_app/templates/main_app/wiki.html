@@ -1,0 +1,22 @@
+{% extends "main_app/base.html" %}
+{% load static %}
+
+{% block include %}
+    <link rel="stylesheet" href="{% static 'main_app/css/wiki.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <h1>Wiki</h1>
+    <h2>About</h2>
+    <p>Maze Creator (<a href="https://github.com/ShouvikGhosh2048/MazeCreator">Github repository</a>) is a 
+        website to create and play with mazes.</p>
+    <h2>Maze Visibility</h2>
+    <p>After creating a maze, it doesn't automatically become public. 
+        You can make a request to make it public in the maze detail page, 
+        and it can be reviewed and made public by a moderator.
+    </p>
+    <p>If you edit a maze, it becomes private if it was public before,
+        and thus you need to request to make it public again.
+    </p>
+    <p>Moderators can remove mazes from public view.</p>
+{% endblock %}

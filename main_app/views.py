@@ -250,3 +250,6 @@ def profile(request):
         "bookmarks": bookmarks,
         "creations": creations,
     })
+
+def wiki(request):
+    return render(request,"main_app/wiki.html")
