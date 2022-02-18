@@ -62,6 +62,8 @@ def update_maze(request,pk):
             maze.title = form.cleaned_data["title"]
             maze.time = form.cleaned_data["time"]
             maze.grid = form.cleaned_data["grid"]
+            maze.public = False
+            maze.requested_publish = False
             maze.save()
             return redirect(maze)
         else:
@@ -244,7 +246,10 @@ def view_user(request,pk):
 
 @login_required
 def profile(request):
-    bookmarks = Bookmark.objects.filter(user = request.user).all()
+    #Show bookmarks where the maze is either public or user created.
+    public_bookmarks = Bookmark.objects.filter(user = request.user, maze__public = True)
+    user_created_bookmarks = Bookmark.objects.filter(user = request.user, maze__creator = request.user)
+    bookmarks = public_bookmarks.union(user_created_bookmarks).all()
     bookmarks = [bookmark.maze for bookmark in bookmarks]
 
     creations = Maze.objects.filter(creator = request.user).all()
