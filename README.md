@@ -8,3 +8,13 @@ Some of the useful resources used to make this project:
 - [Corey Schafer's tutorial](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) (especially for authentication)
 - [Django documentation](https://docs.djangoproject.com/en/4.0/)
 - [Stack Overflow](https://stackoverflow.com/)
+
+## Features implemented:
+- Users can create, edit, delete, view and play mazes.
+- Login/Signup
+- A simple moderation system
+- A wiki
+
+## Posible future features:
+- Random maze generator
+- Maze autoplay
