@@ -152,6 +152,8 @@ class MazeDetailView(DetailView):
             return response
             
         elif "rating" in request.POST:
+            if request.user == maze.creator:
+                return HttpResponseForbidden()
             try:
                 rating_value = int(request.POST["rating"])
                 if rating_value < 1 or rating_value > 5:
