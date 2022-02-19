@@ -20,6 +20,7 @@ Some of the useful resources used to make this project:
 - Maze autoplay
 
 ## License
-The majority of the project is licensed under GPLV3. 
 Certain sections have been adapted from resources with their own licenses.
-Check comments in the code.
+Check comments in the code for references.
+
+The remaining code written by me is available under GPLV3.
