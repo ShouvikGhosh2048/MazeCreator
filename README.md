@@ -8,6 +8,7 @@ Some of the useful resources used to make this project:
 - [Corey Schafer's tutorial](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) (especially for authentication)
 - [Django documentation](https://docs.djangoproject.com/en/4.0/)
 - [Stack Overflow](https://stackoverflow.com/)
+- [CS50 Web](https://cs50.harvard.edu/web/2020/)
 
 ## Features implemented:
 - Users can create, edit, delete, view and play mazes.
@@ -21,6 +22,6 @@ Some of the useful resources used to make this project:
 
 ## License
 Certain sections have been adapted from resources with their own licenses.
-Check comments in the code for references.
+Check comments in the code + useful resources for references used.
 
 The remaining code written by me is available under GPLV3.
