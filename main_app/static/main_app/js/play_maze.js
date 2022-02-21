@@ -37,29 +37,47 @@ document.addEventListener("DOMContentLoaded",() => {
         startNewGame();
     });
 
-    let canvas =  document.querySelector("canvas");
-    canvas.addEventListener("resize",canvasCtxSetup);
+    let gameCanvas =  document.getElementById("gameCanvas");
+    gameCanvas.addEventListener("resize",gameCanvasCtxSetup);
 
-    canvasInputSetup();
-    canvasCtxSetup();
+    gameCanvasInputSetup();
+    gameCanvasCtxSetup();
+    setupInstructions();
 });
 
-function canvasInputSetup() {
-    let canvas = document.querySelector("canvas");
+function setupInstructions() {
+    let squareTypes = document.getElementById("squareTypes").querySelectorAll("canvas");
+    for (let i = 0; i < squareTypes.length; i++){
+        let canvas = squareTypes[i];
+        let ctx = canvas.getContext("2d");
+        drawSquare(ctx,0,0,100,canvas.dataset["type"]);
+    }
+    document.getElementById("openInstructions").addEventListener("click",() => {
+        document.getElementById("instructions").classList.remove("hidden");
+        document.getElementById("game").style.display = "none";
+    });
+    document.getElementById("closeInstructions").addEventListener("click",() => {
+        document.getElementById("instructions").classList.add("hidden");
+        document.getElementById("game").style.display = "flex";
+    });
+}
 
-    canvas.addEventListener("keyup",(ev) => {
+function gameCanvasInputSetup() {
+    let gameCanvas = document.getElementById("gameCanvas");
+
+    gameCanvas.addEventListener("keyup",(ev) => {
         if(ev.key === keyPressed){
             keyup = true;
         }
     });
 
-    canvas.addEventListener("focusout",(ev) => {
+    gameCanvas.addEventListener("focusout",(ev) => {
         if(["w","a","s","d","ArrowLeft","ArrowUp","ArrowDown","ArrowRight"].findIndex(val => val === keyPressed) !== -1){
             keyup = true;
         }
     });
 
-    canvas.addEventListener("keydown",(ev) => {
+    gameCanvas.addEventListener("keydown",(ev) => {
         if(["w","a","s","d","ArrowLeft","ArrowUp","ArrowDown","ArrowRight"].findIndex(val => val === ev.key) !== -1){
             keyPressed = ev.key;
             keyup = false;
@@ -87,8 +105,8 @@ function canvasInputSetup() {
     });
 }
 
-function canvasCtxSetup(){
-    ctx = document.querySelector("canvas").getContext("2d");
+function gameCanvasCtxSetup(){
+    ctx = document.getElementById("gameCanvas").getContext("2d");
     ctx.imageSmoothingEnabled = false;
 }
 
@@ -141,8 +159,8 @@ function startNewGame(){
     document.getElementById("result").innerText = "";
     document.getElementById("coins").innerText = `Coins: ${currCoins}/${totalCoins}`;
     
-    let canvas = document.querySelector("canvas");
-    canvas.focus();
+    let gameCanvas = document.getElementById("gameCanvas");
+    gameCanvas.focus();
 
     renderGrid();
     timeCallback();

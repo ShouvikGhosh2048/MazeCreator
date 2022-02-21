@@ -12,54 +12,98 @@
 {% endblock %}
 
 {% block content %}
-    <div id="maze_nav">
-        <a href = "{% url 'maze' maze.id %}">Back to maze</a>
+    <div id="instructions" class="hidden">
+        <button id="closeInstructions">Close</button>
+        <h1>Instructions</h1>
+        <p>Your main objective is to get to the goal before the timer runs out.</p>
+        <p>Your secondary objective is to collect as many coins as you can.</p>
+        <table>
+            <thead>
+                <th>Type</th>
+                <th>Description</th>
+            </thead>
+            <tbody id = "squareTypes">
+                <tr>
+                    <td>
+                        <canvas width="100" height="100" data-type="P"></canvas>
+                    </td>
+                    <td>Player</td>
+                </tr>
+                <tr>
+                    <td>
+                        <canvas width="100" height="100" data-type="G"></canvas>
+                    </td>
+                    <td>Goal</td>
+                </tr>
+                <tr>
+                    <td>
+                        <canvas width="100" height="100" data-type="B"></canvas>
+                    </td>
+                    <td>Block</td>
+                </tr>
+                <tr>
+                    <td>
+                        <canvas width="100" height="100" data-type="C"></canvas>
+                    </td>
+                    <td>Coin</td>
+                </tr>
+                <tr>
+                    <td>
+                        <canvas width="100" height="100" data-type="T"></canvas>
+                    </td>
+                    <td>Time bonus (+20s)</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <!-- https://stackoverflow.com/a/57332 -->
-    <div class="gameContainer" style="position: relative;">
-        <canvas tabindex="1" height="800" width="800"></canvas>
-        <div id = "playMenuContainer" style="position: absolute; top:0; left:0; width: 100%; height:100%; display: flex; align-items: center; justify-content: center; ">
-            <div style="padding: 30px;" id="playMenu">
-                <button id="play">Play</button>
-                <span id="result"></span>
-                <br>
-                <button id="replay" class="hidden">Replay</button>
-            </div>
+    <div id="game">
+        <div id="maze_nav">
+            <a href = "{% url 'maze' maze.id %}">Back to maze</a>
+            <button id="openInstructions">Instructions</button>
         </div>
-        <span id="timer" style="user-select:none; position: absolute; left: 1px; top: 1px; padding: 5px; background-color: white;"></span>
-        <span id="coins" style="user-select:none; position: absolute; top: 1px; right: 1px; padding: 5px; background-color: white;"></span>
-    </div>
-    <div style="gap: 2vw; grid-template-columns: 25vw 25vw 25vw; width: fit-content; margin: auto;" class="arrowButtons">
-        <svg style="grid-column: 2/3; grid-row: 1/2" width="25vw" height="25vw" viewBox="0 0 100 100" class="arrowButton" data-move="UpButton">
-            <rect x="0" y="0" width="100" height="100" fill="white"></rect>
-            <line x1="50" y1="25" x2="50" y2="75" stroke-width="4" stroke="black"></line>
-            <line x1="50" y1="25" x2="25" y2="50" stroke-width="4" stroke="black"></line>
-            <line x1="50" y1="25" x2="75" y2="50" stroke-width="4" stroke="black"></line>
-            <circle cx="50" cy="25" r="2" fill="black"></circle>
-        </svg>
-        <svg style="grid-column: 2/3; grid-row: 2/3" width="25vw" height="25vw" viewBox="0 0 100 100" class="arrowButton" data-move="DownButton">
-            <rect x="0" y="0" width="100" height="100" fill="white"></rect>
-            <line x1="50" y1="75" x2="50" y2="25" stroke-width="4" stroke="black"></line>
-            <line x1="50" y1="75" x2="75" y2="50" stroke-width="4" stroke="black"></line>
-            <line x1="50" y1="75" x2="25" y2="50" stroke-width="4" stroke="black"></line>
-            <circle cx="50" cy="75" r="2" fill="black"></circle>
-        </svg>
-        <svg style="grid-column: 1/2; grid-row: 2/3" width="25vw" height="25vw" viewBox="0 0 100 100" class="arrowButton" data-move="LeftButton">
-            <rect x="0" y="0" width="100" height="100" fill="white"></rect>
-            <line x1="25" y1="50" x2="75" y2="50" stroke-width="4" stroke="black"></line>
-            <line x1="25" y1="50" x2="50" y2="25" stroke-width="4" stroke="black"></line>
-            <line x1="25" y1="50" x2="50" y2="75" stroke-width="4" stroke="black"></line>
-            <circle cx="25" cy="50" r="2" fill="black"></circle>
-        </svg>
-        <svg style="grid-column: 3/4; grid-row: 2/3" width="25vw" height="25vw" viewBox="0 0 100 100" class="arrowButton" data-move="RightButton">
-            <rect x="0" y="0" width="100" height="100" fill="white"></rect>
-            <line x1="75" y1="50" x2="25" y2="50" stroke-width="4" stroke="black"></line>
-            <line x1="75" y1="50" x2="50" y2="25" stroke-width="4" stroke="black"></line>
-            <line x1="75" y1="50" x2="50" y2="75" stroke-width="4" stroke="black"></line>
-            <circle cx="75" cy="50" r="2" fill="black"></circle>
-        </svg>
-    </div>
-    <div id="debug">
-
+        <!-- https://stackoverflow.com/a/57332 -->
+        <div class="gameContainer" style="position: relative;">
+            <canvas id="gameCanvas" tabindex="1" height="800" width="800"></canvas>
+            <div id = "playMenuContainer" style="position: absolute; top:0; left:0; width: 100%; height:100%; display: flex; align-items: center; justify-content: center; ">
+                <div style="padding: 30px;" id="playMenu">
+                    <button id="play">Play</button>
+                    <span id="result"></span>
+                    <br>
+                    <button id="replay" class="hidden">Replay</button>
+                </div>
+            </div>
+            <span id="timer" style="user-select:none; position: absolute; left: 1px; top: 1px; padding: 5px; background-color: white;"></span>
+            <span id="coins" style="user-select:none; position: absolute; top: 1px; right: 1px; padding: 5px; background-color: white;"></span>
+        </div>
+        <div style="gap: 2vw; grid-template-columns: 25vw 25vw 25vw; width: fit-content; margin: auto;" class="arrowButtons">
+            <svg style="grid-column: 2/3; grid-row: 1/2" width="25vw" height="25vw" viewBox="0 0 100 100" class="arrowButton" data-move="UpButton">
+                <rect x="0" y="0" width="100" height="100" fill="white"></rect>
+                <line x1="50" y1="25" x2="50" y2="75" stroke-width="4" stroke="black"></line>
+                <line x1="50" y1="25" x2="25" y2="50" stroke-width="4" stroke="black"></line>
+                <line x1="50" y1="25" x2="75" y2="50" stroke-width="4" stroke="black"></line>
+                <circle cx="50" cy="25" r="2" fill="black"></circle>
+            </svg>
+            <svg style="grid-column: 2/3; grid-row: 2/3" width="25vw" height="25vw" viewBox="0 0 100 100" class="arrowButton" data-move="DownButton">
+                <rect x="0" y="0" width="100" height="100" fill="white"></rect>
+                <line x1="50" y1="75" x2="50" y2="25" stroke-width="4" stroke="black"></line>
+                <line x1="50" y1="75" x2="75" y2="50" stroke-width="4" stroke="black"></line>
+                <line x1="50" y1="75" x2="25" y2="50" stroke-width="4" stroke="black"></line>
+                <circle cx="50" cy="75" r="2" fill="black"></circle>
+            </svg>
+            <svg style="grid-column: 1/2; grid-row: 2/3" width="25vw" height="25vw" viewBox="0 0 100 100" class="arrowButton" data-move="LeftButton">
+                <rect x="0" y="0" width="100" height="100" fill="white"></rect>
+                <line x1="25" y1="50" x2="75" y2="50" stroke-width="4" stroke="black"></line>
+                <line x1="25" y1="50" x2="50" y2="25" stroke-width="4" stroke="black"></line>
+                <line x1="25" y1="50" x2="50" y2="75" stroke-width="4" stroke="black"></line>
+                <circle cx="25" cy="50" r="2" fill="black"></circle>
+            </svg>
+            <svg style="grid-column: 3/4; grid-row: 2/3" width="25vw" height="25vw" viewBox="0 0 100 100" class="arrowButton" data-move="RightButton">
+                <rect x="0" y="0" width="100" height="100" fill="white"></rect>
+                <line x1="75" y1="50" x2="25" y2="50" stroke-width="4" stroke="black"></line>
+                <line x1="75" y1="50" x2="50" y2="25" stroke-width="4" stroke="black"></line>
+                <line x1="75" y1="50" x2="50" y2="75" stroke-width="4" stroke="black"></line>
+                <circle cx="75" cy="50" r="2" fill="black"></circle>
+            </svg>
+        </div>
     </div>
 {% endblock %}
