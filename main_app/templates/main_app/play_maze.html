@@ -4,8 +4,8 @@
 {% block include %}
     <link rel="stylesheet" href="{% static 'main_app/css/play_maze.css' %}"/>
     <script>
-        let gridData = `{{ maze.grid }}`;
-        let totalTime = "{{ maze.time }}";
+        let gridData = "{{ maze.grid | escapejs}}";
+        let totalTime = "{{ maze.time | escapejs}}";
     </script>
     <script src = "{% static 'main_app/js/draw_square.js' %}"></script>
     <script src = "{% static 'main_app/js/play_maze.js' %}"></script>
