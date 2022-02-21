@@ -12,6 +12,9 @@
 {% endblock %}
 
 {% block content %}
+    <div id="maze_nav">
+        <a href = "{% url 'maze' maze.id %}">Back to maze</a>
+    </div>
     <!-- https://stackoverflow.com/a/57332 -->
     <div class="gameContainer" style="position: relative;">
         <canvas tabindex="1" height="800" width="800"></canvas>

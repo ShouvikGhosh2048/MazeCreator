@@ -57,3 +57,14 @@ canvas {
         display: grid;
     }
 }
+
+#maze_nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#maze_nav a {
+    color: black;
+}
