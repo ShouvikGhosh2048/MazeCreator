@@ -25,7 +25,7 @@
 #play,#replay {
     color: white;
     border: none;
-    border-radius: 7px;
+    border-radius: 2px;
     padding: 4px 10px;
     cursor: pointer;
     font-size: larger;
@@ -68,7 +68,7 @@
     background-color: white;
     max-width: 500px;
     margin: auto;
-    padding: 5px;
+    padding: 2px;
 }
 
 #squareTypes canvas {
@@ -89,12 +89,12 @@ td {
 }
 
 #openInstructions {
-    background-color: rgb(190, 0, 0);
+    background-color: rgb(16, 67, 134);
     cursor: pointer;
     color: white;
     border: 5px;
     padding: 5px;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 #closeInstructions {
@@ -103,5 +103,15 @@ td {
     color: white;
     border: none;
     padding: 5px;
-    border-radius: 3px;
+    border-radius: 2px;
+}
+
+#instructionsNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
 }

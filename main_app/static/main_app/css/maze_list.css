@@ -33,7 +33,7 @@ input[type="text"]{
 
 input[type="submit"] {
     border: none;
-    border-radius: 5px;
+    border-radius: 2px;
     color: white;
     background-color: rgb(2, 94, 2);
     padding: 5px;
@@ -41,10 +41,10 @@ input[type="submit"] {
 }
 
 form div {
-    margin: 5px;
+    margin: 2px;
 }
 
 form span {
     display: inline-block;
-    margin: 5px;
+    margin: 2px;
 }

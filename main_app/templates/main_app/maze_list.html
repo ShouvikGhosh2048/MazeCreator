@@ -9,8 +9,7 @@
     <form>
         <span>
             <span>
-                <label>Title:</label>
-                <input type="text" name="title" id="title" value="{{ search_title }}">
+                <input type="text" name="title" id="title" value="{{ search_title }}" placeholder="Title">
             </span>
             <span>
                 {% if user_is_moderator %}
@@ -19,7 +18,7 @@
             {% endif %}  
             </span>            
         </span>
-        <input type="submit" value="Search maze">
+        <input type="submit" value="Search">
     </form>
     <div class="search-results">
         {% for maze in maze_list %}
