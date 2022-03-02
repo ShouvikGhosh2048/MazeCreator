@@ -32,11 +32,11 @@
 }
 
 #play {
-    background-color: #004b0a;
+    background-color: #097000;
 }
 
 #replay {
-    background-color: #004b0a;
+    background-color: #097000;
 }
 
 .arrowButtons {
@@ -89,21 +89,23 @@ td {
 }
 
 #openInstructions {
-    background-color: rgb(16, 67, 134);
+    background-color: rgb(0, 106, 148);
     cursor: pointer;
     color: white;
     border: 5px;
     padding: 5px;
     border-radius: 2px;
+    font-size: 1rem;
 }
 
 #closeInstructions {
-    background-color: rgb(170, 1, 1);
+    background-color: rgb(180, 1, 1);
     cursor: pointer;
     color: white;
     border: none;
     padding: 5px;
     border-radius: 2px;
+    font-size: 1rem;
 }
 
 #instructionsNav {

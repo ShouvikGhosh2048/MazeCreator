@@ -12,21 +12,22 @@
 .play-link {
     font-size: small;
     display: inline-block;
-    padding: 5px;
     color: white;
     text-decoration: none;
-    background-color: #004b0a;
+    background-color: #097000;
     border-radius: 2px;
+    padding: 7px;
 }
 
 .delete-link {
     font-size: small;
     display: inline-block;
-    padding: 5px;
     color: white;
     text-decoration: none;
-    background-color: rgb(116, 0, 0);
+    background-color: rgb(189, 22, 22);
     border-radius: 2px;
+    padding: 7px;
+    margin-left: 10px;
 }
 
 .update-link {
@@ -35,13 +36,14 @@
     padding: 5px;
     color: white;
     text-decoration: none;
-    background-color: rgb(16, 67, 134);
+    background-color: rgb(0, 113, 189);
     border-radius: 2px;
+    padding: 7px;
+    margin-right: 10px;
 }
 
 
 .username-link {
-    color: black;
     max-width: 90vw;
     display: inline-block;
     margin-left: 5px;
@@ -62,7 +64,8 @@ button, #bookmark {
     padding: 5px;
     color: white;
     text-decoration: none;
-    background-color: rgb(16, 67, 134);
+    background-color: rgb(0, 113, 189);
     cursor: pointer;
     border-radius: 2px;
+    padding: 7px;
 }

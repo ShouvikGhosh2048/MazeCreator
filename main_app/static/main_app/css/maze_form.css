@@ -37,7 +37,7 @@ html {
     padding: 5px 8px;
     cursor: pointer;
     color: white;
-    background-color: #11640a;
+    background-color: #097000;
     border-radius: 3px;
     font-size: 1em;
 }
@@ -71,18 +71,20 @@ canvas {
     border: none;
     padding: 6px 10px;
     border-radius: 2px;
-    background-color: rgb(150, 3, 3);
+    background-color: rgb(197, 0, 0);
+    font-size: 0.87rem;
     color: white;
     cursor: pointer;
 }
 
 .menuButton {
-    border: none;
-    color: white;
-    padding: 6px 10px;
-    border-radius: 2px;
-    background-color: rgb(16, 67, 134);
+    padding: 6px;
     cursor: pointer;
+    background-color: rgb(8, 92, 170);
+    border: none;
+    border-radius: 2px;
+    color: whitesmoke;
+    font-size: 0.87rem;
 }
 
 #newGridForm span {
