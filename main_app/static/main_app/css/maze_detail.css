@@ -10,36 +10,26 @@
 }
 
 .play-link {
-    font-size: small;
+    font-size: 1.1rem;
     display: inline-block;
-    color: white;
-    text-decoration: none;
-    background-color: #097000;
     border-radius: 2px;
-    padding: 7px;
+    font-weight: bold;
 }
 
 .delete-link {
-    font-size: small;
+    font-size: 1.1rem;
     display: inline-block;
-    color: white;
-    text-decoration: none;
-    background-color: rgb(189, 22, 22);
     border-radius: 2px;
-    padding: 7px;
     margin-left: 10px;
+    font-weight: bold;
 }
 
 .update-link {
-    font-size: small;
+    font-size: 1.1rem;
     display: inline-block;
-    padding: 5px;
-    color: white;
-    text-decoration: none;
-    background-color: rgb(8, 92, 170);
     border-radius: 2px;
-    padding: 7px;
     margin-right: 10px;
+    font-weight: bold;
 }
 
 
@@ -47,25 +37,20 @@
     max-width: 90vw;
     display: inline-block;
     margin-left: 5px;
+    color: black;
 }
 .creator-details {
     display: flex;
     align-items: baseline;
 }
 
-#creator_controls,.user_controls,#moderator_controls {
+#creator_controls,.user_controls,#moderator_controls,#public_view_control{
     margin: 10px 0;
 }
 
 button, #bookmark {
-    border: none;
-    font-size: small;
     display: inline-block;
     padding: 5px;
-    color: white;
-    text-decoration: none;
-    background-color: rgb(8, 92, 170);
     cursor: pointer;
-    border-radius: 2px;
-    padding: 7px;
+    font-size: 0.9rem;
 }

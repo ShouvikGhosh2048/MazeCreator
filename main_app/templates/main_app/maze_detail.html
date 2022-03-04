@@ -13,21 +13,6 @@
     {% if average_rating %}
         <p id="average_rating">Average rating: {{ average_rating }}</p>
     {% endif %}
-    {% if creator %}
-        <div id="creator_controls">
-            <a href="{% url 'update_maze' maze.id %}" class="update-link">Edit maze</a>
-            <span id="set_publish">
-                {% if maze.public %}
-                    <button id="creator_visibility_control" data-action="make-private">Make private</button>
-                {% elif maze.requested_publish %}
-                    <button id="creator_visibility_control" data-action="cancel-public">Cancel request to make public</button>
-                {% else %}
-                    <button id="creator_visibility_control" data-action="make-public">Request to make public</button>
-                {% endif %}
-            </span>
-            <a href="{% url 'delete_maze' maze.id %}" class="delete-link">Delete maze</a>
-        </div>
-    {% endif %}
     {% if user.is_authenticated %}
         <div class="user_controls">
             {% if authenticated_non_creator %}
@@ -59,6 +44,25 @@
             {% else %}
                 value = "Add to bookmarks"
             {% endif %}>
+        </div>
+    {% endif %}
+    {% if creator %}
+        <div id="creator_controls">
+            <div id="public_view_control">
+                <span id="set_publish">
+                    {% if maze.public %}
+                        <button id="creator_visibility_control" data-action="make-private">Make private</button>
+                    {% elif maze.requested_publish %}
+                        <button id="creator_visibility_control" data-action="cancel-public">Cancel request to make public</button>
+                    {% else %}
+                        <button id="creator_visibility_control" data-action="make-public">Request to make public</button>
+                    {% endif %}
+                </span>
+            </div>
+            <div>
+                <a href="{% url 'update_maze' maze.id %}" class="update-link">Edit maze</a>
+                <a href="{% url 'delete_maze' maze.id %}" class="delete-link">Delete maze</a>
+            </div>
         </div>
     {% endif %}
     {% if maze_moderator_controls %}
