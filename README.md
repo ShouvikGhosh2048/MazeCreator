@@ -23,6 +23,6 @@ Some of the useful resources used to make this project:
 
 ## License
 Certain sections have been adapted from resources with their own licenses.
-Check useful resources section + comments in the code for references used.
+Check useful resources section + comments in the code + comments in commits for references used.
 
 The remaining code written by me is available under GPLV3.
